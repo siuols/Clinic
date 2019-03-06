@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user_form.errors %}
+  {% for field in user_form %}
+    {{ field.errors }}
+  {% endfor %}
+{% endif %}
+
+<div class="container">
+  <div class="card card-register mx-auto mt-5">
+    <div class="card-header">Register an Account</div>
+    <div class="card-body">
+      <form method="post" enctype="multipart/form-data" action="{% url 'register' %}">{% csrf_token %}
+        <div class="form-group">
+          <div class="form-label-group">
+            <input type="text" name="username" id="id_username" class="form-control" placeholder="Username" required="required">
+            <label for="id_username">Username</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-label-group">
+            <input type="email" name="email" id="id_email" class="form-control" placeholder="Email address" required="required">
+            <label for="id_email">Email address</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-row">
+            <div class="col-md-6">
+              <div class="form-label-group">
+                <input type="password" name="password1" id="id_password1" class="form-control" placeholder="Password" required="required">
+                <label for="id_password1">Password</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-label-group">
+                <input type="password" name="password2" id="id_password2" class="form-control" placeholder="Confirm password" required="required">
+                <label for="id_password2">Confirm password</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Save</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

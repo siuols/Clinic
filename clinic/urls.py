@@ -14,8 +14,20 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
+from django.conf import settings
+from django.contrib.auth.views import LoginView, LogoutView
+from django.urls import path, include, reverse_lazy
+from django.conf.urls.static import static
+from medical.views import RegisterFormView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('medical/', include('medical.urls', namespace='medical')),
+    path('', LoginView.as_view(), name='login'),
+    path('logout/', LogoutView.as_view(next_page=reverse_lazy('login')), name='logout'),
+    path('register/', RegisterFormView.as_view(), name='register')
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+<head>
+  <link rel="stylesheet" href="{% static 'css/barcode.css' %}" />
+  <script src="{% static 'js/jquery.js' %}"></script>
+  <script src="{% static 'js/barcode.js' %}"></script>
+  <style>
+    #scanner {
+      display: none;
+    }
+  </style>
+</head>
+<body id="page-top">
+    <!-- Sidebar -->
+    <div id="content-wrapper">
+      <div class="alignment-scanner" id="scanner">
+        <div id="barcode">
+          <video id="barcodevideo" autoplay></video>
+          <canvas id="barcodecanvasg" ></canvas>
+        </div>
+        <canvas id="barcodecanvas"></canvas>
+        <div id="result"></div>
+      </div>
+      <div class="container-fluid">
+        <!-- DataTables Example -->
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-table"></i>
+            Stock List</div>
+            <button onclick="myFunction()">Scan</button>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>Code</th>
+                    <th>Description</th>
+                    <th>Quantity</th>
+                    <th>Actual used</th>
+                  </tr>
+                </thead>
+                <tbody>           
+                  {% if post %}
+                    {% for post in post %}
+                      <tr>
+                        <td><a href="{% url 'medical:stock-detail' post.number %}">{{ post.number }}</a></td>
+                        <td>{{ post.description }}</td>
+                        <td>{{ post.quantity }}</td>
+                        <td>{{ post.actual_used }}</td>
+                      </tr>
+                  {% endfor %}
+                {% endif %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.container-fluid -->
+      <!-- Sticky Footer -->
+      <footer class="sticky-footer">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright © Your Website 2019</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <!-- /.content-wrapper -->
+  </div>
+  <!-- /#wrapper -->
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+  <script type="text/javascript">
+    var sound = new Audio("barcode.wav");
+    $(document).ready(function() {
+      barcode.config.start = 0.1;
+      barcode.config.end = 0.9;
+      barcode.config.video = '#barcodevideo';
+      barcode.config.canvas = '#barcodecanvas';
+      barcode.config.canvasg = '#barcodecanvasg';
+      barcode.setHandler(function(barcode) {
+        $('.result').html(barcode);
+        $(".form-control-sm").focus();
+        $('.form-control-sm').val(barcode);
+      });
+      barcode.init();
+      $('#result').bind('DOMSubtreeModified', function(e) {
+        sound.play(); 
+      });
+    });
+    function myFunction() {
+      var x = document.getElementById("scanner");
+      if (x.style.display === "block") {
+        x.style.display = "none";
+      } else {
+        x.style.display = "block";
+      }
+    }
+  </script>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="container">
+    <div class="card card-register mx-auto mt-5">
+      <div class="card-header">Customer Information</div>
+      <div class="card-body">
+        <form method="POST" class="post-form" role="form">{% csrf_token %}
+          <div class="form-group">
+            <div class="form-label-group">
+              <input type="text" name="id_number" maxlength="255" id="id_id_number" class="form-control" placeholder="Number" required="required">
+              <label for="id_id_number">ID Number</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-label-group">
+              <input type="text" name="last_name" maxlength="255" id="id_last_name" class="form-control" placeholder="Last name" required="required">
+              <label for="id_last_name">Last name</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-label-group">
+              <input type="text" name="first_name" maxlength="255" id="id_first_name" class="form-control" placeholder="First name" required="required">
+              <label for="id_first_name">First name</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-label-group">
+              <input type="text" name="middle_name" maxlength="255" id="id_middle_name" class="form-control" placeholder="Middle name" required="required">
+              <label for="id_middle_name">Middle name</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-group list-course">
+              <label>Course</label>
+               {{ form.course }}
+            </div>
+          </div>
+           <div class="form-group">
+            <div class="form-group status-list">
+              <label>Status</label>
+               {{ form.status }}
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Save</button>
+          <button type="reset" class="bbtn btn-primary btn-block">Reset Button</button>  
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

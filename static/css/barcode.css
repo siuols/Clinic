@@ -1,0 +1,27 @@
+#barcodevideo, #barcodecanvas, #barcodecanvasg {
+  height: 300px;
+} 
+
+#barcodecanvasg {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+#result {
+  font-family: verdana;
+  font-size: 1.5em;
+  /*color:red;*/
+}
+
+#barcode {
+  position: relative;
+} 
+
+#barcodecanvas {
+  display: none;
+}
+
+.alignment-scanner{
+  padding-left: 30%;
+}

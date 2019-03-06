@@ -68,7 +68,7 @@ class History(models.Model):
     item_code               = models.ForeignKey('Course', on_delete=models.CASCADE)
     quantity                = models.CharField(max_length=255)
     complaints              = models.TextField()
-    treatment               = models.TextField()
+    medication              = models.TextField()
     date_created            = models.DateTimeField(auto_now_add=True)
     date_modified           = models.DateTimeField(auto_now=True)
 

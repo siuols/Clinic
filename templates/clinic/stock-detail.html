@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block head_title %}{{ item_detail.name }} | {{ block.super }}{% endblock head_title %}
+
+{% load staticfiles %}
+
+{% block content %}
+  <div class="container">
+
+    <div class="card card-register mx-auto mt-5">
+      <div class="card-header">Item Information</div>
+      <div class="card-body">
+        <form method="post" enctype="multipart/form-data">
+          <div class="form-group">
+            <div class="form-label-group">
+              <img src="{{ item_detail.barcode.url }}" alt="Avatar">
+              <p>Code number : {{ item_detail.number }}</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-label-group">
+              <p>Description : {{ item_detail.description }}</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-label-group">
+              <p>Quantity : {{ item_detail.quantity }}</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-label-group">
+              <p>Actual used : {{ item_detail.actual_used }}</p>
+            </div>
+          <div class="form-group">
+            <div class="form-label-group">
+              <p>Timestamp: {{ item_detail.date_created }}</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-label-group">
+              <p>Date Updated: {{ item_detail.date_modified }}</p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
