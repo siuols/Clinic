@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <div id="content-wrapper">
+      <div class="container-fluid">
+        <!-- DataTables Example -->
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-table"></i>
+            Patient List</div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>ID number</th>
+                    <th>Last name</th>
+                    <th>First name</th>
+                    <th>Middle name</th>
+                    <th>Course</th>
+                  </tr>
+                </thead>
+                <tbody>           
+                  {% if post %}
+                    {% for post in post %}
+                      <tr>
+                        <td><a href="{% url 'medical:patient-detail' post.id_number %}">{{ post.id_number }}</a></td>
+                        <td>{{ post.last_name }}</td>
+                        <td>{{ post.first_name }}</td>
+                        <td>{{ post.middle_name }}</td>
+                        <td>{{ post.course }}</td>
+                      </tr>
+                  {% endfor %}
+                {% endif %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="sticky-footer">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright © 2019</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+{% endblock %}

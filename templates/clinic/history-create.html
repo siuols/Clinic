@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+  <link rel="stylesheet" href="{% static 'css/barcode.css' %}" />
+  <script src="{% static 'js/jquery.js' %}"></script>
+  <script src="{% static 'js/barcode.js' %}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <style>
+    #scanner {
+      display: none;
+    }
+  </style>
+  <div class="container">
+    <div class="alignment-scanner" id="scanner">
+      <div id="barcode">
+        <video id="barcodevideo" autoplay></video>
+        <canvas id="barcodecanvasg" ></canvas>
+      </div>
+      <canvas id="barcodecanvas"></canvas>
+      <div id="result"></div>
+    </div>
+    <div class="card card-register mx-auto mt-5">
+      <div class="card-header">Medication</div>
+      <button onclick="myFunction()">Scan</button>
+      <div>
+        <input type="text" id="search" name="search" style="margin: 10px;width: 165px;" onkeyup="filter()">
+      </div>
+      <div class="card-body">
+        <form method="POST" class="post-form" role="form">{% csrf_token %}
+          <div class="form-group">
+            <div class="form-group id_number">
+              <label>ID number</label>
+               {{ form.id_number }}
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-group item id_item_code">
+              <label>Code</label>
+                {{ form.item_code }}
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-label-group">
+              <input type="text" name="quantity" maxlength="255" id="id_quantity" class="form-control" placeholder="Quantity" required="required">
+              <label for="id_quantity">Quantity</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-group office-list">
+              <label>Complaints</label>
+               <textarea class="form-control" name="complaints" required id="id_complaints" rows="3"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-group office-list">
+              <label>Medication</label>
+               <textarea class="form-control" name="medication" required id="id_medication" rows="3"></textarea>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Save</button>
+          <button type="reset" class="bbtn btn-primary btn-block">Reset Button</button>  
+        </form>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    function filter() {
+          var keyword = document.getElementById("search").value;
+          var select = document.getElementById("id_item_code");
+          for (var i = 0; i < select.length; i++) {
+              var txt = select.options[i].text;
+              if (txt.substring(0, keyword.length).toLowerCase() !== keyword.toLowerCase() && keyword.trim() !== "") {
+                $(select.options[i]).attr('disabled', 'disabled').hide();
+              } else {
+                $(select.options[i]).removeAttr('disabled').show();
+              }
+          }
+      }
+    var sound = new Audio("barcode.wav");
+    $(document).ready(function() {
+      barcode.config.start = 0.1;
+      barcode.config.end = 0.9;
+      barcode.config.video = '#barcodevideo';
+      barcode.config.canvas = '#barcodecanvas';
+      barcode.config.canvasg = '#barcodecanvasg';
+      barcode.setHandler(function(barcode) {
+        $('.result').html(barcode);
+        $('#search').val(barcode);
+        $('#id_item_code').focus();
+      });
+      barcode.init();
+      $('#result').bind('DOMSubtreeModified', function(e) {
+        sound.play(); 
+      });
+    });
+    function myFunction() {
+      var x = document.getElementById("scanner");
+      if (x.style.display === "block") {
+        x.style.display = "none";
+      } else {
+        x.style.display = "block";
+      }
+    }
+  </script>
+{% endblock %}

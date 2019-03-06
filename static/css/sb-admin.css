@@ -2609,14 +2609,14 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: #31681c;
+  border-color: #31681c;
 }
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #0069d9;
-  border-color: #0062cc;
+  background-color: #31681c;
+  border-color: #31681c;
 }
 
 .btn-primary:focus, .btn-primary.focus {
@@ -5258,8 +5258,8 @@ input[type="button"].btn-block {
 .page-item.active .page-link {
   z-index: 1;
   color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: #31681c;
+  border-color: #e9ecef;
 }
 
 .page-item.disabled .page-link {
@@ -6827,13 +6827,13 @@ button.bg-light:focus {
 }
 
 .bg-dark {
-  background-color: #1a7bf7 !important;
+  background-color: #05671b !important;
 }
 
 a.bg-dark:hover, a.bg-dark:focus,
 button.bg-dark:hover,
 button.bg-dark:focus {
-  background-color: #1a7bf7 !important;
+  background-color: #05671b !important;
 }
 
 .bg-white {

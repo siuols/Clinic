@@ -65,8 +65,8 @@ class Patient(models.Model):
 class History(models.Model):
     user                    = models.ForeignKey(User, on_delete=models.CASCADE)
     id_number               = models.ForeignKey('Patient', on_delete=models.CASCADE)
-    item_code               = models.ForeignKey('Course', on_delete=models.CASCADE)
-    quantity                = models.CharField(max_length=255)
+    item_code               = models.ForeignKey('Stock', on_delete=models.CASCADE)
+    quantity                = models.IntegerField()
     complaints              = models.TextField()
     medication              = models.TextField()
     date_created            = models.DateTimeField(auto_now_add=True)
