@@ -263,7 +263,6 @@ class PerPatientReport(View):
         today = timezone.now()
         params = {
             'today': today,
-            'item': item,
-            'request': request
+            'item': item,            'request': request
         }
         return Render.render('report/patient-history.html', params)
