@@ -1,4 +1,4 @@
-{% load static from staticfiles %}
+  {% load static from staticfiles %}
 <!doctype html>
 <html>
 <head>
@@ -32,8 +32,9 @@
         <thead>
           <tr>
             <th>ID number</th>
-            <th>Code</th>
-            <th>Quantity</th>
+            <th>Last name</th>
+            <th>First name</th>
+            <th>Middle</th>
             <th>Complaints</th>
             <th>Medication</th>
             <hr></hr>
@@ -43,8 +44,9 @@
           <hr></hr> 
             <tr>
               <td>{{ item.id_number }}</td>
-              <td>{{ item.item_code }}</td>
-              <td>{{ item.quantity }}</td>
+              <td>{{ item.last_name }}</td>
+              <td>{{ item.first_name }}</td>
+              <td>{{ item.middle_name }}</td>
               <td>{{ item.complaints }}</td>
               <td>{{ item.medication }}</td>
             </tr>

@@ -258,12 +258,12 @@ class HistoryReport(View):
         return Render.render('report/patient-history.html', params)
 
 class PerPatientReport(View):
-    def get(self,pk, request):
-        borrow = get_object_or_404(Patient, pk=pk)
+    def get(self, request, id_number, *args, **kwargs):
+        item = get_object_or_404(Patient, id_number=id_number)
         today = timezone.now()
         params = {
             'today': today,
-            'borrow': borrow,
+            'item': item,
             'request': request
         }
         return Render.render('report/patient-history.html', params)
