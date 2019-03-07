@@ -35,5 +35,5 @@ urlpatterns = [
     path('create/patient', PatientCreateView.as_view(), name='patient-create'),
     path('report/stock', StockReport.as_view(), name='stock-report'),
     path('report/history', HistoryReport.as_view(), name='history-report'),
-    path('pdf/<str:id_number>/', views.PerPatientReport.as_view(), name='per-student-report'),
+    path('pdf/<int:pk>/', views.PerPatientReport.as_view(), name='per-student-report'),
 ]

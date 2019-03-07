@@ -41,7 +41,7 @@
                   {% if post %}
                     {% for post in post %}
                       <tr>
-                        <td><a href="{% url 'medical:per-student-report' post.id_number %}">{{ post.id_number }}</a></td>
+                        <td><a href="{% url 'medical:per-student-report' post.pk %}">{{ post.id_number }}</a></td>
                         <td>{{ post.item_code }}</td>
                         <td>{{ post.quantity }}</td>
                         <td>{{ post.complaints }}</td>

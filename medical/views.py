@@ -258,11 +258,12 @@ class HistoryReport(View):
         return Render.render('report/patient-history.html', params)
 
 class PerPatientReport(View):
-    def get(self, request, id_number, *args, **kwargs):
-        item = get_object_or_404(Patient, id_number=id_number)
+    def get(self, request, pk, *args, **kwargs):
+        item = get_object_or_404(History, pk=pk)
         today = timezone.now()
         params = {
             'today': today,
-            'item': item,            'request': request
+            'item': item,            
+            'request': request
         }
         return Render.render('report/patient-history.html', params)
