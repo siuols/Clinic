@@ -41,15 +41,18 @@
         </thead>
         <tbody class="pdf">
           <hr></hr> 
-            <tr>
-              <td>{{ item.item_code }}</td>
-              <td>{{ item.quantity }}</td>
-              <td>{{ item.complaints }}</td>
-              <td>{{ item.medication }}</td>
-            </tr>
+            {% for item in item %}
+              <tr>
+                  <td>{{ item.item_code }}</td>
+                  <td>{{ item.quantity }}</td>
+                  <td>{{ item.complaints }}</td>
+                  <td>{{ item.medication }}</td>
+                  <br>
+              </tr>
+            {% endfor %}
         </tbody>
       </table>
     </div>
   </div>
 </body>
-</html>          
+</html>

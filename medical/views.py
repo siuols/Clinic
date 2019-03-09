@@ -266,4 +266,4 @@ class PerPatientReport(View):
             'item': item,            
             'request': request
         }
-        return Render.render('report/patient-history.html', params)
+        return Render.render('report/report-detail.html', params)
