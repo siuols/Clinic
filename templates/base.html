@@ -26,7 +26,7 @@
 	    </ul>
 		</nav>
     <div id="wrapper">
-      <ul class="sidebar navbar-nav">
+      <ul class="sidebar navbar-nav toggled">
         <li class="nav-item active">
           <a class="nav-link" href="{% url 'medical:stock-list' %}">
             <i class="fas fa-fw fa-clinic-medical"></i>
@@ -41,13 +41,13 @@
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
             <h6 class="dropdown-header">Information</h6>
             <a class="dropdown-item" href="{% url 'medical:stock-create' %}">Add Stock</a>
-            <h6 class="dropdown-header">Patient Information:</h6>
+            <h6 class="dropdown-header">Patient Information</h6>
             <a class="dropdown-item" href="{% url 'medical:department-create' %}">Add Department</a>
             <a class="dropdown-item" href="{% url 'medical:course-create' %}">Add Course</a>
             <a class="dropdown-item" href="{% url 'medical:patient-create' %}">Add Patient</a>
             <a class="dropdown-item" href="{% url 'medical:patient-list' %}">Patient List</a>
             <a class="dropdown-item" href="{% url 'medical:history-list' %}">Patient Result</a>
-            <h6 class="dropdown-header">Reports :</h6>
+            <h6 class="dropdown-header">Reports</h6>
             <a class="dropdown-item" href="{% url 'medical:stock-report' %}">Stock in Report</a>
             <a class="dropdown-item" href="{% url 'medical:history-report' %}">Medication Report</a>
           </div>

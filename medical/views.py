@@ -197,7 +197,7 @@ def stock_edit(request,number):
             post = form.save(commit=False)
             post.user = request.user
             post.save()
-            return redirect('stock:item-detail', number=number)
+            return redirect('medical:stock-detail', number=number)
     else:
         form = StockForm(instance=post)
     context = {
